@@ -1,12 +1,12 @@
 import React, { useReducer } from 'react';
-import axios from 'axios';
 import GifContext from './gifContext';
 import gifReducer from './gifReducer';
-import { SEARCH_GIFS, GET_GIFS, CLEAR_GIFS } from '../types';
+import { SEARCH_GIFS, ADD_RECENTS, CLEAR_GIFS } from '../types';
 
 const GifState = (props) => {
   const initialState = {
     search: '',
+    searchList: [],
   };
   const [state, dispatch] = useReducer(gifReducer, initialState);
 
@@ -22,12 +22,21 @@ const GifState = (props) => {
     });
   };
 
+  const addRecents = (text) => {
+    dispatch({
+      type: ADD_RECENTS,
+      payload: text,
+    });
+  };
+
   return (
     <GifContext.Provider
       value={{
         search: state.search,
+        searchList: state.searchList,
         searchGifs,
         clearSearch,
+        addRecents,
       }}
     >
       {props.children}

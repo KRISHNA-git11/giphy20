@@ -11,6 +11,7 @@ const Search = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     searchGifs(text);
+    // addRecents(text);
     setText('');
   };
   return (
@@ -18,7 +19,7 @@ const Search = () => {
       <form onSubmit={onSubmit}>
         <input
           type="text"
-          placeholder="Search gifs"
+          placeholder="#Search"
           className="search-block"
           value={text}
           onChange={onChange}

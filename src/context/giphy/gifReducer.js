@@ -1,4 +1,4 @@
-import { SEARCH_GIFS, GET_GIFS, CLEAR_GIFS } from '../types';
+import { SEARCH_GIFS, ADD_RECENTS, CLEAR_GIFS } from '../types';
 
 export default (state, action) => {
   switch (action.type) {
@@ -11,6 +11,11 @@ export default (state, action) => {
       return {
         ...state,
         search: '',
+      };
+    case ADD_RECENTS:
+      return {
+        ...state,
+        searchList: [...state, action.payload],
       };
     default:
       return state;

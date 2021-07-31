@@ -1,21 +1,22 @@
 import './App.css';
-import Gifs from './components/giphyGifs/Gifs';
-import NavBar from './components/layout/NavBar';
-import RecentSearchs from './components/layout/RecentSearchs';
+// import NavBar from './components/layout/NavBar';
 import Search from './components/layout/Search';
 import GifState from './context/giphy/GifState';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Reddit from './components/pages/Reddit';
+import Home from './components/pages/Home';
 
 function App() {
   return (
     <GifState>
-      <NavBar />
-      <Search className="container"/>
-      <div className="flex container">
-        <div className="recents">
-           <RecentSearchs />
-        </div>
-        <Gifs className="table"/>
-      </div>
+      <Router>
+        {/* <NavBar /> */}
+        {/* <Search className="container" /> */}
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/reddit" component={Reddit} />
+        </Switch>
+      </Router>
     </GifState>
   );
 }
